@@ -3,3 +3,6 @@ python-dotenv         # For loading environment variables from .env file
 flask-sqlalchemy      # For database integration
 flask-login           # For user authentication and session management
 werkzeug              # For password hashing (already included as a Flask dependency)
+
+tensorflow
+transformers

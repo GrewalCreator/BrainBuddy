@@ -1,0 +1,95 @@
+/* General Team Page Styling */
+.team-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title Styling */
+.team-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-transform: uppercase; /* Optional: Adds uppercase style */
+    font-weight: 600; /* Optional: Makes the title bolder */
+}
+
+/* Team Member Container */
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Team Member Card */
+.team-member {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 250px;
+    width: 100%;
+    margin: 10px;
+}
+
+/* Profile Picture */
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Team Member Name */
+.team-member-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* Bio / Social Links */
+.team-member-bio {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.social-links button {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    color: white;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.social-links button:hover {
+    background-color: #45a049;
+}
