@@ -6,3 +6,5 @@ werkzeug              # For password hashing (already included as a Flask depend
 
 tensorflow
 transformers
+datasets
+torch
