@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_cors import CORS
 from os import path, getenv
 from dotenv import load_dotenv
 
@@ -21,6 +22,7 @@ def create_app():
     # Initialize extensions
     db.init_app(app)
     login_manager.init_app(app)
+    CORS(app)
 
     # Register blueprints
     from .views import views

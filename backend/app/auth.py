@@ -32,7 +32,7 @@ def logout():
 
 @auth.route("/sign-up", methods=["POST"])
 def sign_up():
-    data = request.json  # Expecting JSON payload: { "email": "user@example.com", "password": "password", "name": "John Doe" }
+    data = request.get_json()  # Get the JSON payload from the frontend
     email = data.get("email")
     password = data.get("password")
     name = data.get("name")
@@ -45,13 +45,17 @@ def sign_up():
     if User.query.filter_by(email=email).first():
         return jsonify({"error": "Email already exists"}), 400
 
-    # Create a new user
-    hashed_password = generate_password_hash(password, method="sha256")
-    new_user = User(email=email, password=hashed_password, name=name)
-    db.session.add(new_user)
-    db.session.commit()
+    # Hash the password
+    hashed_password = generate_password_hash(password, method="pbkdf2:sha256")
 
-    return jsonify({"message": f"User {name} registered successfully"}), 201
+    # Create and store the new user
+    try:
+        new_user = User(email=email, password=hashed_password, name=name)
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({"message": f"User {name} registered successfully"}), 201
+    except Exception as e:
+        return jsonify({"error": f"Server error: {str(e)}"}), 500
 
 # Example of a protected route
 @auth.route("/profile")
