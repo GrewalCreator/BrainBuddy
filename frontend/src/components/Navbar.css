@@ -1,0 +1,21 @@
+/* Styles for the navigation bar container */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4caf50;
+    padding: 10px 20px;
+}
+
+/* Styles for the navigation links */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+/* Optional: Add hover effect for the links */
+nav a:hover {
+    text-decoration: underline;
+}
