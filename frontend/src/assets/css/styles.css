@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-cream-50: #faf7f2; 
+  --color-sage-600: #7c8f7e;
+  --color-sage-700: #6b7a6c;
+}
+
+body {
+  @apply bg-cream-50 text-gray-900 font-sans;
+}
+
+.bg-cream-50 {
+  background-color: var(--color-cream-50);
+}
+
+.bg-sage-600 {
+  background-color: var(--color-sage-600);
+}
+
+.bg-sage-700 {
+  background-color: var(--color-sage-700);
+}
+
+.text-sage-600 {
+  color: var(--color-sage-600);
+}
