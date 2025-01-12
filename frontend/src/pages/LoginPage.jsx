@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -25,27 +26,30 @@ const LoginPage = () => {
     };
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", backgroundColor: "#f5f5f5" }}>
+        <div>
             <h1>Login</h1>
-            <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", width: "300px" }}>
+            <form onSubmit={handleLogin}>
                 <input
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    style={{ margin: "10px 0", padding: "10px", fontSize: "16px" }}
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    style={{ margin: "10px 0", padding: "10px", fontSize: "16px" }}
                 />
-                <button type="submit" style={{ padding: "10px", fontSize: "16px", backgroundColor: "#4caf50", color: "white", border: "none", cursor: "pointer" }}>
+                <button type="submit" className="btn">
                     Login
                 </button>
             </form>
+
+            <Link to="/sign-up">
+                <button className="btn">Register</button>
+            </Link>
+
             {message && <p>{message}</p>}
         </div>
     );

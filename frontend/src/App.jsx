@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Decks from "./pages/Decks";
@@ -18,6 +19,7 @@ const App = () => {
                     path="/"
                     element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
                 />
+                <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/decks" element={<Decks />} />
