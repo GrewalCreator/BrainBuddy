@@ -5,19 +5,23 @@ from .models import User, db
 
 auth = Blueprint("auth", __name__)
 
-@auth.route("/login", methods=["POST"])
+@auth.route('/login', methods=['POST'])
 def login():
-    data = request.json  # Expecting JSON payload: { "email": "user@example.com", "password": "password" }
-    email = data.get("email")
-    password = data.get("password")
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
 
     # Validate input
     if not email or not password:
         return jsonify({"error": "Email and password are required"}), 400
 
-    # Find user by email
+    # Check if user exists
     user = User.query.filter_by(email=email).first()
-    if not user or not check_password_hash(user.password, password):
+    if not user:
+        return jsonify({"error": "Invalid email or password"}), 401
+
+    # Validate password
+    if not check_password_hash(user.password, password):
         return jsonify({"error": "Invalid email or password"}), 401
 
     # Log the user in
@@ -30,12 +34,12 @@ def logout():
     logout_user()
     return jsonify({"message": "Logged out successfully"}), 200
 
-@auth.route("/sign-up", methods=["POST"])
+@auth.route('/sign-up', methods=['POST'])
 def sign_up():
-    data = request.get_json()  # Get the JSON payload from the frontend
-    email = data.get("email")
-    password = data.get("password")
-    name = data.get("name")
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    name = data.get('name')
 
     # Validate input
     if not email or not password or not name:
@@ -48,14 +52,12 @@ def sign_up():
     # Hash the password
     hashed_password = generate_password_hash(password, method="pbkdf2:sha256")
 
-    # Create and store the new user
-    try:
-        new_user = User(email=email, password=hashed_password, name=name)
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify({"message": f"User {name} registered successfully"}), 201
-    except Exception as e:
-        return jsonify({"error": f"Server error: {str(e)}"}), 500
+    # Create and save the user
+    new_user = User(email=email, password=hashed_password, name=name)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({"message": f"User {name} registered successfully"}), 201
 
 # Example of a protected route
 @auth.route("/profile")
