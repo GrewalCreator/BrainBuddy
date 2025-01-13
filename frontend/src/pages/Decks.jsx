@@ -7,7 +7,7 @@ const Decks = () => {
   
   return (
     <div className="min-h-screen bg-cream-50">
-      <NavBar />
+      
       <main className="container mx-auto px-4 py-12">
         <h1 className="text-3xl font-serif text-center mb-12">
           Your Decks

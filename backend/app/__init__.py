@@ -5,6 +5,12 @@ from flask_cors import CORS
 from os import path, getenv
 from dotenv import load_dotenv
 
+# Register blueprints
+from .views import views
+from .auth import auth
+from BuddyAI import buddyAI
+from .models import User  # Import the User model TODO: create user model in models.py
+
 load_dotenv()
 
 db = SQLAlchemy()
@@ -24,15 +30,12 @@ def create_app():
     login_manager.init_app(app)
     CORS(app)
 
-    # Register blueprints
-    from .views import views
-    from .auth import auth
-
     app.register_blueprint(views, url_prefix='/')  # Main routes
     app.register_blueprint(auth, url_prefix='/')  # Authentication routes
+    app.register_blueprint(buddyAI, url_prefix='/')
 
     # Flask-Login user loader
-    from .models import User  # Import the User model TODO: create user model in models.py
+    
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))  # Fetch user by ID

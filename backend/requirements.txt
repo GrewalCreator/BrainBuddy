@@ -5,7 +5,3 @@ flask-login           # For user authentication and session management
 werkzeug              # For password hashing (already included as a Flask dependency)
 flask-cors
 
-tensorflow
-transformers
-datasets
-torch
