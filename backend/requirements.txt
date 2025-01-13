@@ -4,4 +4,7 @@ flask-sqlalchemy      # For database integration
 flask-login           # For user authentication and session management
 werkzeug              # For password hashing (already included as a Flask dependency)
 flask-cors
+flask-bcrypt          # for user authentication
+flask-session         # for server-side sessions/cookies
 
+openai

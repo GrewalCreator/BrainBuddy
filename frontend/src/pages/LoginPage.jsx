@@ -19,7 +19,7 @@ const LoginPage = () => {
                 password,
             });
             setMessage(response.data.message); // Success message
-            navigate("/dashboard"); // Redirect on success
+            navigate("/home"); // Redirect to home on success
         } catch (error) {
             if (error.response && error.response.data) {
                 setMessage(error.response.data.error); // Backend error message
@@ -32,43 +32,41 @@ const LoginPage = () => {
     return (
         <div>
             <Navbar />
-        <div className="login-page">
-            <div className="login-container">
-                <h1 className="login-title">Welcome Back!</h1>
-                <p className="login-subtitle">Please log in to continue.</p>
-                <form onSubmit={handleLogin} className="login-form">
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="login-input"
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="login-input"
-                        required
-                    />
-                    <button type="submit" className="btn login-btn">
-                        Login
-                    </button>
-                </form>
-                <p className="login-message">{message}</p>
-                <p className="login-register">
-                    Don't have an account?{" "}
-                    <Link to="/sign-up" className="register-link">
-                        Sign Up
-                    </Link>
-                </p>
+            <div className="login-page">
+                <div className="login-container">
+                    <h1 className="login-title">Welcome Back!</h1>
+                    <p className="login-subtitle">Please log in to continue.</p>
+                    <form onSubmit={handleLogin} className="login-form">
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="login-input"
+                            required
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="login-input"
+                            required
+                        />
+                        <button type="submit" className="btn login-btn">
+                            Login
+                        </button>
+                    </form>
+                    <p className="login-message">{message}</p>
+                    <p className="login-register">
+                        Don't have an account?{" "}
+                        <Link to="/sign-up" className="register-link">
+                            Sign Up
+                        </Link>
+                    </p>
+                </div>
             </div>
         </div>
-
-        </div>
-        
     );
 };
 
