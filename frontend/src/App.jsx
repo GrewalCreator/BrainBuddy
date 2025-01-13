@@ -10,9 +10,11 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Decks from "./pages/Decks";
+import Decks from "./pages/myDecks";
 import Team from "./pages/Team";
 import Launchpad from "./pages/LaunchPad";
+import Test from "./pages/Test";
+import Generate from "./pages/Generate";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
     return isLoggedIn ? children : <Navigate to="/" />;
@@ -31,20 +33,28 @@ const App = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                setIsLoggedIn(data.isAuthenticated); // Only update React state
+                setIsLoggedIn(data.isAuthenticated);
+                localStorage.setItem("isLoggedIn", data.isAuthenticated);
             } else {
                 setIsLoggedIn(false);
+                localStorage.removeItem("isLoggedIn");
             }
         } catch (error) {
             console.error("Error checking authentication status:", error);
             setIsLoggedIn(false);
+            localStorage.removeItem("isLoggedIn");
         }
     };
 
     // Check authentication status on app load
     useEffect(() => {
-        checkAuthStatus();
-    }, []); // Empty dependency array ensures this runs once when the component mounts
+        const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+        if (storedIsLoggedIn === "true") {
+            setIsLoggedIn(true);
+        } else {
+            checkAuthStatus();
+        }
+    }, []);
 
     const handleLogin = (status) => {
         setIsLoggedIn(status);
@@ -53,7 +63,7 @@ const App = () => {
 
     return (
         <Router>
-            {isLoggedIn && <Navbar />}
+            {isLoggedIn}
             <Routes>
                 <Route
                     path="/login"
@@ -62,6 +72,7 @@ const App = () => {
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/contact" element={<Team />} />
                 <Route path="/" element={<Launchpad />} />
+                <Route path="/testAI" element={<Test />} />
 
                 <Route
                     path="/home"
@@ -99,7 +110,7 @@ const App = () => {
                     path="/generate"
                     element={
                         <ProtectedRoute isLoggedIn={isLoggedIn}>
-                            <Decks />
+                            <Generate />
                         </ProtectedRoute>
                     }
                 />

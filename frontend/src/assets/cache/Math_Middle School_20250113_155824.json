@@ -1,0 +1,22 @@
+[
+    {
+        "answer": "27",
+        "question": "What is the value of the expression 3(4 + 5)?"
+    },
+    {
+        "answer": "Area = length × width",
+        "question": "What is the formula for the area of a rectangle?"
+    },
+    {
+        "answer": "a² + b² = c²",
+        "question": "What is the Pythagorean theorem?"
+    },
+    {
+        "answer": "30",
+        "question": "What is 15% of 200?"
+    },
+    {
+        "answer": "1/2",
+        "question": "If you roll a die, what is the probability of rolling an even number?"
+    }
+]

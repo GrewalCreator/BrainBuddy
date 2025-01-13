@@ -3,11 +3,8 @@ python-dotenv         # For loading environment variables from .env file
 flask-sqlalchemy      # For database integration
 flask-login           # For user authentication and session management
 werkzeug              # For password hashing (already included as a Flask dependency)
-flask-cors            # for cross-origin resource sharing 
+flask-cors
 flask-bcrypt          # for user authentication
 flask-session         # for server-side sessions/cookies
 
-tensorflow
-transformers
-datasets
-torch
+openai
