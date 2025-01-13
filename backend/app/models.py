@@ -2,8 +2,10 @@ from . import db
 from flask_login import UserMixin
 from uuid import uuid4
 
+
 def get_uuid():
     return uuid4().hex
+
 
 class User(UserMixin, db.Model):
     __tablename__ = "users"
