@@ -4,8 +4,8 @@ import {
     Routes,
     Route,
     Navigate,
-    useNavigate,
-} from "react-router-dom";
+} 
+from "react-router-dom";
 import { checkAuthStatus } from "./utils/authUtils"; // Import the utility function
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -22,16 +22,10 @@ const ProtectedRoute = ({ isLoggedIn, children }) => {
 };
 
 const AuthHandler = ({ setIsLoggedIn }) => {
-    const navigate = useNavigate();
-
     useEffect(() => {
         const fetchAuthStatus = async () => {
             const isAuthenticated = await checkAuthStatus();
             setIsLoggedIn(isAuthenticated);
-
-            if (isAuthenticated) {
-                navigate("/home");
-            }
         };
 
         fetchAuthStatus();
@@ -50,7 +44,7 @@ const App = () => {
             <Routes>
                 <Route
                     path="/login"
-                    element={<LoginPage handleLogin={setIsLoggedIn} />}
+                    element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
                 />
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/contact" element={<Team />} />

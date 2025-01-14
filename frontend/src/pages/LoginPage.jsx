@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import "../assets/css/login.css";
 
-const LoginPage = () => {
+const LoginPage = ({ setIsLoggedIn }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -19,6 +19,7 @@ const LoginPage = () => {
                 password,
             });
             setMessage(response.data.message); // Success message
+            setIsLoggedIn(true); // Update global auth state
             navigate("/home"); // Redirect to home on success
         } catch (error) {
             if (error.response && error.response.data) {
