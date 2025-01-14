@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "../components/NavBar";
 import "../assets/css/team.css";
+import sophieProfile from "../assets/images/sophie.png";
+import gurtejProfile from "../assets/images/gurtej.jpg"
 
 const TeamMember = ({ name, profilePicture, github, linkedin, portfolio }) => {
     return (
@@ -48,13 +50,13 @@ const Team = () => {
     const team = [
         {
             name: "Gurtej Grewal",
-            profilePicture: "../assets/images/grewal.jpg",
+            profilePicture: gurtejProfile,
             github: "https://github.com/GrewalCreator",
             linkedin: "https://www.linkedin.com/in/gurtej-grewal",
         },
         {
             name: "Sophie",
-            profilePicture: "../assets/images/sophie.png",
+            profilePicture: sophieProfile,
             github: "https://github.com/sophieynw",
             linkedin: "https://linkedin.com/in/sophie-y-wang",
             portfolio: "https://portfolio-ten-mauve-67.vercel.app/",

@@ -24,7 +24,7 @@ const Generate = () => {
 
     try {
       // Send request to backend
-      const response = await axios.post('/generateFlashcards', {
+      await axios.post('/generateFlashcards', {
         topic,
         grade,
         additionalInfo,
