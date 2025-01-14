@@ -1,57 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardPreview from "../components/CardPreview";
 import "../assets/css/myDecks.css";
 import Navbar from "../components/NavBar";
 
 const Decks = () => {
-  // Sample data for demonstration
-  const sampleDeck1 = [
-    { question: "What is 2 + 2?", answer: "4" },
-    { question: "What is the capital of France?", answer: "Paris" },
-    { question: "What is the boiling point of water?", answer: "100°C" },
-  ];
+  const [decks, setDecks] = useState([]);
 
-  const sampleDeck2 = [
-    { question: "What is 3 x 3?", answer: "9" },
-    { question: "What is the square root of 16?", answer: "4" },
-    { question: "What is the chemical symbol for water?", answer: "H₂O" },
-  ];
+  useEffect(() => {
+    const fetchDecks = async () => {
+      try {
+        const response = await fetch("/api/getDecks");
+        const data = await response.json();
+        setDecks(data.decks);
+      } catch (error) {
+        console.error("Error fetching decks:", error);
+      }
+    };
+
+    fetchDecks();
+  }, []);
 
   return (
     <div>
       <Navbar />
       <div className="decks-container">
         <h1 className="decks-title">Your Flashcard Decks</h1>
-
-        <div className="deck-section">
-          <h2 className="deck-title">Math Basics</h2>
-          <div className="deck-preview-container">
-            {sampleDeck1.map((card, index) => (
-              <CardPreview
-                key={index}
-                question={card.question}
-                answer={card.answer}
-                width={200}
-                height={300}
-              />
-            ))}
+        {decks.map((deck, index) => (
+          <div key={index} className="deck-section">
+            <h2 className="deck-title">{deck.title}</h2>
+            <div className="deck-preview-container">
+              {deck.cards.map((card, cardIndex) => (
+                <CardPreview
+                  key={cardIndex}
+                  question={card.question}
+                  answer={card.answer}
+                  width={200}
+                  height={300}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="deck-section">
-          <h2 className="deck-title">Science Fundamentals</h2>
-          <div className="deck-preview-container">
-            {sampleDeck2.map((card, index) => (
-              <CardPreview
-                key={index}
-                question={card.question}
-                answer={card.answer}
-                width={200}
-                height={300}
-              />
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

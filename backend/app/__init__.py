@@ -8,6 +8,7 @@ from flask_session import Session
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from datetime import timedelta
+from .decks_api import decks_api
 
 # Load environment variables from .env file
 load_dotenv()
@@ -49,6 +50,9 @@ def get_or_generate_secret_key():
 def create_app():
     # Create the Flask app
     app = Flask(__name__, instance_path=INSTANCE_DIR, instance_relative_config=True)
+
+    #register decks_api blueprint
+    app.register_blueprint(decks_api, url_prefix="/")
 
     # Configurations
     app.config["SECRET_KEY"] = get_or_generate_secret_key()
