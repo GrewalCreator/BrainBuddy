@@ -20,7 +20,9 @@ bcrypt = Bcrypt()
 # Define paths
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))  # Base directory of the app
 INSTANCE_DIR = os.path.join(BASE_DIR, "instance")  # Path for the instance folder
-SESSION_DIR = os.path.join(BASE_DIR, "flask_session")  # Path for the flask_session folder
+SESSION_DIR = os.path.join(
+    BASE_DIR, "flask_session"
+)  # Path for the flask_session folder
 DB_NAME = "database.db"
 
 
@@ -52,20 +54,23 @@ def create_app():
 
     # Configurations
     app.config["SECRET_KEY"] = get_or_generate_secret_key()
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(INSTANCE_DIR, DB_NAME)}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        f"sqlite:///{os.path.join(INSTANCE_DIR, DB_NAME)}"
+    )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     # Flask-Session configurations
     app.config["SESSION_TYPE"] = "filesystem"
     app.config["SESSION_FILE_DIR"] = SESSION_DIR
-    app.config["SESSION_PERMANENT"] = False
+    app.config["SESSION_PERMANENT"] = True
     app.config["SESSION_USE_SIGNER"] = True
     app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=1)
 
     # Secure cookie configurations
-    app.config["SESSION_COOKIE_SECURE"] = True  # HTTPS only
-    app.config["SESSION_COOKIE_HTTPONLY"] = True  # Prevent JavaScript access
-    app.config["SESSION_COOKIE_SAMESITE"] = "Lax"  # Mitigate CSRF
+    app.config["SESSION_COOKIE_SECURE"] = False  # Use True in production
+    app.config["SESSION_COOKIE_HTTPONLY"] = True
+    app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+    app.config["REMEMBER_COOKIE_DURATION"] = timedelta(hours=1)
 
     # Ensure instance and session directories exist
     os.makedirs(INSTANCE_DIR, exist_ok=True)

@@ -4,8 +4,8 @@ import {
     Routes,
     Route,
     Navigate,
+    useNavigate,
 } from "react-router-dom";
-import Navbar from "./components/NavBar";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
@@ -17,11 +17,12 @@ import Test from "./pages/Test";
 import Generate from "./pages/Generate";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
-    return isLoggedIn ? children : <Navigate to="/" />;
+    return isLoggedIn ? children : <Navigate to="/login" />;
 };
 
-const App = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+// New Component: Handles Authentication and Navigation
+const AuthHandler = ({ setIsLoggedIn }) => {
+    const navigate = useNavigate(); // useNavigate is safe here since it's inside Router
 
     // Function to check if the user is authenticated
     const checkAuthStatus = async () => {
@@ -34,40 +35,39 @@ const App = () => {
             if (response.ok) {
                 const data = await response.json();
                 setIsLoggedIn(data.isAuthenticated);
-                localStorage.setItem("isLoggedIn", data.isAuthenticated);
+
+                // Redirect to /home if authenticated
+                if (data.isAuthenticated) {
+                    navigate("/home");
+                }
             } else {
-                setIsLoggedIn(false);
-                localStorage.removeItem("isLoggedIn");
+                setIsLoggedIn(false); // User is not authenticated
             }
         } catch (error) {
             console.error("Error checking authentication status:", error);
-            setIsLoggedIn(false);
-            localStorage.removeItem("isLoggedIn");
+            setIsLoggedIn(false); // Handle authentication error
         }
     };
 
-    // Check authentication status on app load
     useEffect(() => {
-        const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
-        if (storedIsLoggedIn === "true") {
-            setIsLoggedIn(true);
-        } else {
-            checkAuthStatus();
-        }
+        checkAuthStatus(); // Call checkAuthStatus once when the app loads
     }, []);
 
-    const handleLogin = (status) => {
-        setIsLoggedIn(status);
-        localStorage.setItem("isLoggedIn", status);
-    };
+    return null; // This component doesn't render anything
+};
+
+const App = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
         <Router>
-            {isLoggedIn}
+            {/* AuthHandler handles initial authentication check */}
+            <AuthHandler setIsLoggedIn={setIsLoggedIn} />
+
             <Routes>
                 <Route
                     path="/login"
-                    element={<LoginPage handleLogin={handleLogin} />}
+                    element={<LoginPage handleLogin={setIsLoggedIn} />}
                 />
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/contact" element={<Team />} />

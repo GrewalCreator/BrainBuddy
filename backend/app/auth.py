@@ -1,6 +1,5 @@
-from flask import Blueprint, request, jsonify, redirect, url_for
+from flask import Blueprint, request, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User, db
 from . import bcrypt
 
@@ -9,6 +8,9 @@ auth = Blueprint("auth", __name__)
 
 @auth.route("/sign-up", methods=["POST"])
 def sign_up():
+    """
+    Registers a new user.
+    """
     data = request.get_json()
     email = data.get("email", "").strip()
     password = data.get("password", "").strip()
@@ -42,6 +44,9 @@ def sign_up():
 
 @auth.route("/login", methods=["POST"])
 def login():
+    """
+    Logs in an existing user.
+    """
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
@@ -60,7 +65,7 @@ def login():
         return jsonify({"error": "Invalid email or password"}), 401
 
     # Log the user in
-    login_user(user)
+    login_user(user)  # Flask-Login handles session management
     return (
         jsonify(
             {"message": f"Welcome {user.name}!", "id": user.id, "email": user.email}
@@ -72,12 +77,18 @@ def login():
 @auth.route("/logout", methods=["POST"])
 @login_required
 def logout():
-    logout_user()
+    """
+    Logs out the currently authenticated user.
+    """
+    logout_user()  # Flask-Login clears the session
     return jsonify({"message": "Logged out successfully"}), 200
 
 
 @auth.route("/api/is_authenticated", methods=["GET"])
 def is_authenticated():
+    """
+    Checks if a user is authenticated.
+    """
     if current_user.is_authenticated:
         return (
             jsonify(
@@ -92,12 +103,4 @@ def is_authenticated():
             ),
             200,
         )
-    else:
-        return jsonify({"isAuthenticated": False}), 401
-
-
-# # Example of a protected route
-# @auth.route("/profile")
-# @login_required
-# def profile():
-#     return jsonify({"message": f"Welcome to your profile, {current_user.name}!"})
+    return jsonify({"isAuthenticated": False, "user": None}), 200
