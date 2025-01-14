@@ -4,8 +4,9 @@ import {
     Routes,
     Route,
     Navigate,
-    useNavigate,
-} from "react-router-dom";
+} 
+from "react-router-dom";
+import { checkAuthStatus } from "./utils/authUtils"; // Import the utility function
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
@@ -20,40 +21,17 @@ const ProtectedRoute = ({ isLoggedIn, children }) => {
     return isLoggedIn ? children : <Navigate to="/login" />;
 };
 
-// New Component: Handles Authentication and Navigation
 const AuthHandler = ({ setIsLoggedIn }) => {
-    const navigate = useNavigate(); // useNavigate is safe here since it's inside Router
-
-    // Function to check if the user is authenticated
-    const checkAuthStatus = async () => {
-        try {
-            const response = await fetch("/api/is_authenticated", {
-                method: "GET",
-                credentials: "include",
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                setIsLoggedIn(data.isAuthenticated);
-
-                // Redirect to /home if authenticated
-                if (data.isAuthenticated) {
-                    navigate("/home");
-                }
-            } else {
-                setIsLoggedIn(false); // User is not authenticated
-            }
-        } catch (error) {
-            console.error("Error checking authentication status:", error);
-            setIsLoggedIn(false); // Handle authentication error
-        }
-    };
-
     useEffect(() => {
-        checkAuthStatus(); // Call checkAuthStatus once when the app loads
+        const fetchAuthStatus = async () => {
+            const isAuthenticated = await checkAuthStatus();
+            setIsLoggedIn(isAuthenticated);
+        };
+
+        fetchAuthStatus();
     }, []);
 
-    return null; // This component doesn't render anything
+    return null;
 };
 
 const App = () => {
@@ -61,13 +39,12 @@ const App = () => {
 
     return (
         <Router>
-            {/* AuthHandler handles initial authentication check */}
             <AuthHandler setIsLoggedIn={setIsLoggedIn} />
 
             <Routes>
                 <Route
                     path="/login"
-                    element={<LoginPage handleLogin={setIsLoggedIn} />}
+                    element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
                 />
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/contact" element={<Team />} />

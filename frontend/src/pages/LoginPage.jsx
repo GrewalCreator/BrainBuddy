@@ -1,33 +1,24 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import "../assets/css/login.css";
+import { handleLogin  } from "../utils/authUtils";
 
-const LoginPage = () => {
+const LoginPage = ({ setIsLoggedIn }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    const login = async (e) => {
         e.preventDefault();
-
-        try {
-            const response = await axios.post("/login", {
-                email,
-                password,
-            });
-            setMessage(response.data.message); // Success message
-            navigate("/home"); // Redirect to home on success
-        } catch (error) {
-            if (error.response && error.response.data) {
-                setMessage(error.response.data.error); // Backend error message
-            } else {
-                setMessage("An unexpected error occurred. Please try again.");
-            }
+        const result = await handleLogin(email, password);
+        setMessage(result.message);
+        if (result.success) {
+            setIsLoggedIn(true);
+            navigate("/home");
         }
-    };
+    }
 
     return (
         <div>
@@ -36,7 +27,7 @@ const LoginPage = () => {
                 <div className="login-container">
                     <h1 className="login-title">Welcome Back!</h1>
                     <p className="login-subtitle">Please log in to continue.</p>
-                    <form onSubmit={handleLogin} className="login-form">
+                    <form onSubmit={login} className="login-form">
                         <input
                             type="email"
                             placeholder="Email"
