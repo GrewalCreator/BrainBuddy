@@ -5,11 +5,11 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
 import { checkAuthStatus } from "./utils/authUtils"; // Import the utility function
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Decks from "./pages/myDecks";
 import Team from "./pages/Team";
 import Launchpad from "./pages/LaunchPad";
@@ -60,15 +60,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/about"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <About />
-              <ChatBox />
-            </ProtectedRoute>
-          }
-        />
+        
         <Route
           path="/decks"
           element={
@@ -78,6 +70,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/study"
           element={
