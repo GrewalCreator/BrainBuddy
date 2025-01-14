@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/navBar.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Fetch user authentication status when the component mounts
+    const checkAuthStatus = async () => {
+      try {
+        const response = await fetch('/api/is_authenticated', {
+          method: 'GET',
+          credentials: 'include', // Include cookies for session validation
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setIsLoggedIn(data.isAuthenticated); // Assume server responds with isAuthenticated flag
+        } else {
+          setIsLoggedIn(false);
+        }
+      } catch (error) {
+        console.error('Error checking auth status:', error);
+        setIsLoggedIn(false);
+      }
+    };
+
+    checkAuthStatus();
+  }, []);
 
   const handleNavigate = (route) => {
     navigate(route);
@@ -44,7 +69,9 @@ const Navbar = () => {
         <div className="link" onClick={() => handleNavigate('/decks')}>My Flashcards</div>
         <div className="link" onClick={() => handleNavigate('/generate')}>Generate Flashcards</div>
         <div className="link" onClick={() => handleNavigate('/contact')}>Contact Devs</div>
-        <div className="link" onClick={handleLogout}>Logout</div>
+        {isLoggedIn && (
+          <div className="link" onClick={handleLogout}>Logout</div>
+        )}
       </div>
     </nav>
   );
