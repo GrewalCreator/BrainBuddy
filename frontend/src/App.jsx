@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { checkAuthStatus } from "./utils/authUtils"; // Import the utility function
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
@@ -20,54 +21,30 @@ const ProtectedRoute = ({ isLoggedIn, children }) => {
   return isLoggedIn ? children : <Navigate to="/" />;
 };
 
+const AuthHandler = ({ setIsLoggedIn }) => {
+  useEffect(() => {
+    const fetchAuthStatus = async () => {
+      const isAuthenticated = await checkAuthStatus();
+      setIsLoggedIn(isAuthenticated);
+    };
+
+    fetchAuthStatus();
+  }, [setIsLoggedIn]);
+
+  return null;
+};
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Function to check if the user is authenticated
-  const checkAuthStatus = async () => {
-    try {
-      const response = await fetch("/api/is_authenticated", {
-        method: "GET",
-        credentials: "include",
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setIsLoggedIn(data.isAuthenticated);
-        localStorage.setItem("isLoggedIn", data.isAuthenticated);
-      } else {
-        setIsLoggedIn(false);
-        localStorage.removeItem("isLoggedIn");
-      }
-    } catch (error) {
-      console.error("Error checking authentication status:", error);
-      setIsLoggedIn(false);
-      localStorage.removeItem("isLoggedIn");
-    }
-  };
-
-  // Check authentication status on app load
-  useEffect(() => {
-    const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
-    if (storedIsLoggedIn === "true") {
-      setIsLoggedIn(true);
-    } else {
-      checkAuthStatus();
-    }
-  }, []);
-
-  const handleLogin = (status) => {
-    setIsLoggedIn(status);
-    localStorage.setItem("isLoggedIn", status);
-  };
-
   return (
     <Router>
-      {isLoggedIn}
+      <AuthHandler setIsLoggedIn={setIsLoggedIn} />
+
       <Routes>
         <Route
           path="/login"
-          element={<LoginPage handleLogin={handleLogin} />}
+          element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
         />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/contact" element={<Team />} />

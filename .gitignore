@@ -5,4 +5,5 @@ __pycache__/
 *.pyc
 
 .DS_Store
-flask_session
+backend/app/flask_session/**
+backend/app/instance/**
