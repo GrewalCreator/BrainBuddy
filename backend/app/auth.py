@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, redirect, url_for
+from flask import Blueprint, request, jsonify, session
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User, db
@@ -59,8 +59,9 @@ def login():
     if not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Invalid email or password"}), 401
 
-    # Log the user in
-    login_user(user)
+    # Log the user in and save to session
+    session["user_id"] = user.id  # Save user ID in session
+    print(session)
     return (
         jsonify(
             {"message": f"Welcome {user.name}!", "id": user.id, "email": user.email}
@@ -69,31 +70,40 @@ def login():
     )
 
 
+# @auth.route("/logout", methods=["POST"])
+# @login_required
+# def logout():
+#     logout_user()
+#     return jsonify({"message": "Logged out successfully"}), 200
+
+
 @auth.route("/logout", methods=["POST"])
 @login_required
 def logout():
+    session.pop("user_id", None)  # Clear user_id from session
     logout_user()
     return jsonify({"message": "Logged out successfully"}), 200
 
 
 @auth.route("/api/is_authenticated", methods=["GET"])
 def is_authenticated():
-    if current_user.is_authenticated:
-        return (
-            jsonify(
-                {
-                    "isAuthenticated": True,
-                    "user": {
-                        "id": current_user.id,
-                        "name": current_user.name,
-                        "email": current_user.email,
-                    },
-                }
-            ),
-            200,
-        )
-    else:
-        return jsonify({"isAuthenticated": False}), 401
+    if "user_id" in session:
+        user = User.query.get(session["user_id"])
+        if user:
+            return (
+                jsonify(
+                    {
+                        "isAuthenticated": True,
+                        "user": {
+                            "id": user.id,
+                            "name": user.name,
+                            "email": user.email,
+                        },
+                    }
+                ),
+                200,
+            )
+    return jsonify({"isAuthenticated": False, "user": None}), 200
 
 
 # # Example of a protected route
@@ -101,3 +111,8 @@ def is_authenticated():
 # @login_required
 # def profile():
 #     return jsonify({"message": f"Welcome to your profile, {current_user.name}!"})
+
+
+@auth.route("/debug-session", methods=["GET"])
+def debug_session():
+    return jsonify(dict(session)), 200
