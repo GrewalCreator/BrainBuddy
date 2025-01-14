@@ -14,7 +14,7 @@ const ChatBox = () => {
     const timer = setTimeout(() => {
       const welcomeMessage = {
         id: messages.length + 1,
-        text: "Hello! I'm a chatbot. How can I help you today?",
+        text: "Hello! I'm BuddyAI, your personal Tutor & Education Assistant! How can I help you today?",
         sender: "bot",
       };
       setMessages([welcomeMessage]);

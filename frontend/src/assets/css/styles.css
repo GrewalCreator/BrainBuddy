@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --color-cream-50: #faf7f2; 
+  --secondary-color: #faf7f2;
   --color-sage-600: #7c8f7e;
   --color-sage-700: #6b7a6c;
+  --primary-color: #4caf50;
+  --dark-primary-color: #43a047;
 }
 
 body {
@@ -13,7 +15,7 @@ body {
 }
 
 .bg-cream-50 {
-  background-color: var(--color-cream-50);
+  background-color: var(--secondary-color);
 }
 
 .bg-sage-600 {

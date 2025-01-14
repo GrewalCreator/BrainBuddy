@@ -1,114 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* General Styles */
 body {
-    background-color: #fef8e1; /* Creamy background */
-  }
-  
-  /* Main Container */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  
-  /* Hero Section */
-  .hero-section {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  
-  .hero-section h1 {
-    font-size: 3rem;
-    font-family: 'Georgia', serif;
-    font-weight: bold;
-    color: #2c3e50; /* Dark blue-gray */
-    margin-bottom: 1rem;
-  }
-  
-  .hero-section p {
-    font-size: 1.125rem;
-    color: #7f8c8d; /* Gray */
-    margin-bottom: 2rem;
-  }
-  
-  /* Flashcard Section */
-  .flashcard-section {
-    margin-top: 4rem;
-    text-align: center;
-  }
-  
-  .flashcard-section h2 {
-    font-size: 2rem;
-    font-family: 'Georgia', serif;
-    font-weight: bold;
-    color: #2c3e50; /* Dark blue-gray */
-    margin-bottom: 1rem;
-  }
-  
-  .flashcard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  
-  .flashcards {
-    width: 100%;
-    max-width: 800px;
-    border: 1px solid #dcdcdc; /* Light gray */
-    border-radius: 8px;
-    padding: 1.5rem;
-    background-color: #ffffff; /* White background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .flashcards h3 {
-    font-size: 1.5rem;
-    color: #34495e; /* Deep blue-gray */
-    margin-bottom: 1rem;
-  }
-  
-  .flashcards ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-  }
-  
-  .flashcards ul li {
-    font-size: 1.125rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Generate Flashcards Button */
-  .generate-btn {
-    background-color: #3498db; /* Blue */
-    color: #fff; /* White */
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.125rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .generate-btn:hover {
-    background-color: #2980b9; /* Darker blue */
-  }
-  
-  /* Utility Classes */
-  .text-center {
-    text-align: center;
-  }
-  
-  .text-gray {
-    color: #7f8c8d; /* Gray */
-  }
-  
-  .mt-4 {
-    margin-top: 1rem;
-  }
-  
-  .mb-4 {
-    margin-bottom: 1rem;
-  }
-  
+  background-color: var(--secondary-color); /* Creamy background */
+}
+
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  color: #2c3e50; /* Dark blue-gray */
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.125rem;
+  color: #7f8c8d; /* Gray */
+  margin-bottom: 2rem;
+}
+
+/* Flashcard Section */
+.flashcard-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.flashcard-section h2 {
+  font-size: 2rem;
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  color: #2c3e50; /* Dark blue-gray */
+  margin-bottom: 1rem;
+}
+
+.flashcard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.flashcards {
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #dcdcdc; /* Light gray */
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.flashcards h3 {
+  font-size: 1.5rem;
+  color: #34495e; /* Deep blue-gray */
+  margin-bottom: 1rem;
+}
+
+.flashcards ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.flashcards ul li {
+  font-size: 1.125rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+/* Generate Flashcards Button */
+.generate-btn {
+  background-color: var(--primary-color);
+  color: #fff; /* White */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.generate-btn:hover {
+  background-color: var(--dark-primary-color); /* Darker blue */
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-gray {
+  color: #7f8c8d; /* Gray */
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
