@@ -1,0 +1,141 @@
+.chatBox {
+  width: 90%;
+  max-width: 280px;
+  height: 50vh;
+  max-height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chatHeader {
+  padding: 0.5em;
+  background-color: #4caf50;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.controlButton {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em; /* Relative font size */
+}
+
+.controlButton:hover {
+  opacity: 0.8;
+}
+
+.messagesContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; /* Relative gap between messages */
+}
+
+.message {
+  padding: 0.5em;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.userMessage {
+  align-self: flex-end;
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.botMessage {
+  align-self: flex-start;
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+.inputContainer {
+  padding: 0.5em;
+  border-top: 1px solid #ccc;
+  display: flex;
+  gap: 0.5em;
+}
+
+.input {
+  flex: 1;
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.25);
+}
+
+.sendButton {
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sendButton:hover {
+  background-color: #43a047;
+}
+
+/* Styles for the minimized chat icon */
+.chatIcon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 3em;
+  height: 3em;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
+}
+
+.chatIcon:hover {
+  background-color: #43a047;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .chatBox {
+    width: 90%; /* Full width on small screens */
+    right: 5%; /* Center the chat box */
+  }
+}
+
+.chatIcon:hover {
+  background-color: #43a047; /* Darker green for hover */
+}
+.chatBox {
+  transition: transform 0.3s ease-in-out;
+}
+
+.chatIcon {
+  transition: transform 0.3s ease-in-out;
+}
