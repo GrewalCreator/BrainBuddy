@@ -21,7 +21,7 @@ const ChatBox = () => {
     }, 2000); // 2-second delay
 
     return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []); // Run only once when the component mounts
+  }, [messages.length]); // Run only once when the component mounts
 
   // Handle window resize for responsiveness
   useEffect(() => {
