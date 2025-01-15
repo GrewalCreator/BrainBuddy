@@ -7,20 +7,20 @@
     padding: 20px;
 }
 
-/* Sign Up Container */
 .signup-container {
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for contrast */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
     max-width: 400px;
     width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for contrast */
-    backdrop-filter: blur(8px); /* Slight glassmorphism effect */
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20vh;
 }
 
-/* Title and Subtitle */
+
 .signup-container .page-title {
     font-size: 2rem;
     margin-bottom: 12px;
@@ -33,7 +33,6 @@
     color: rgb(34, 17, 66);
 }
 
-/* Form Styling */
 .signup-container .form {
     display: flex;
     flex-direction: column;
@@ -54,14 +53,13 @@
     outline: none;
 }
 
-/* Error Message */
 .signup-container .error-message {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #e74c3c; /* Error red color */
 }
 
-/* Redirect Message */
+
 .signup-container .redirect-message {
     margin-top: 20px;
     font-size: 0.9rem;
@@ -69,7 +67,7 @@
 }
 
 .signup-container .link {
-    color: #007bff; /* Link blue color */
+    color: #007bff;
     text-decoration: none;
     font-weight: bold;
 }

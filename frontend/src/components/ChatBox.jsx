@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../assets/css/ChatBox.css"; // Import the CSS file
-import chatbotIcon from "../assets/images/chatbot-icon.png"; // Import the chatbot icon image
+import chatbotIcon from "../assets/images/chatbot-icon.png";
+import { Typewriter } from 'react-simple-typewriter';
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
@@ -159,7 +160,7 @@ const ChatBox = () => {
           onChange={(e) => setInputValue(e.target.value)}
           className="input"
           placeholder="Type a message..."
-          onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
           disabled={isLoading} // Disable input while loading
         />
         <button

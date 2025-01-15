@@ -7,3 +7,4 @@ __pycache__/
 .DS_Store
 backend/app/flask_session/**
 backend/app/instance/**
+frontend/src/assets/cache/**
