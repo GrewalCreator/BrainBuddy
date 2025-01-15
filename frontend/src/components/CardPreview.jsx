@@ -5,28 +5,30 @@ import "../assets/css/card.css";
 const CardPreview = ({ question, answer, width, height }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const handleFlip = () => {
-    setIsFlipped(!isFlipped);
-  };
-
-  const cardStyle = {
-    width: `${width}px`,
-    height: `${height}px`,
-    fontSize: `${Math.min(width, height) / 15}px`, // Dynamically scale font size
-  };
+  const handleFlip = () => setIsFlipped(!isFlipped);
 
   return (
     <div
       className={`card-preview ${isFlipped ? "flipped" : ""}`}
-      style={cardStyle}
+      style={{ width: `${width}px`, height: `${height}px` }}
       onClick={handleFlip}
     >
       <div className="card-inner">
         <div className="card-front">
-          <p className="card-text">{question}</p>
+          <div className="card-header">Question</div>
+          <div>
+            <p className="card-content">{question}</p>
+          </div>
+          <div className="card-footer">Tap to reveal the answer</div>
         </div>
+
+
         <div className="card-back">
-          <p className="card-text">{answer}</p>
+          <div className="card-header">Answer</div>
+          <div>
+            <p className="card-content">{answer}</p>
+          </div>
+          <div className="card-footer">Tap to go back</div>
         </div>
       </div>
     </div>
