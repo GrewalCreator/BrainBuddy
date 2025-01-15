@@ -84,6 +84,7 @@
   border-radius: 8px;
   max-width: 80%;
   font-family: "Arial", sans-serif;
+  font-size: 0.85em;
 }
 
 .userMessage {
