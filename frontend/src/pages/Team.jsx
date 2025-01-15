@@ -2,7 +2,8 @@ import React from "react";
 import "../assets/css/team.css";
 import sophieProfile from "../assets/images/sophie.png";
 import gurtejProfile from "../assets/images/gurtej.jpg";
-
+import lamProfile from "../assets/images/lam.jpg";
+import grantProfile from "../assets/images/grant.jpg";
 const TeamMember = ({ name, profilePicture, github, linkedin, portfolio }) => {
   return (
     <div className="team-member">
@@ -54,17 +55,15 @@ const Team = () => {
     },
     {
       name: "Grant",
-      profilePicture: "../assets/images/grant.jpg",
+      profilePicture: grantProfile,
       github: "https://github.com/grant",
-      linkedin: "https://linkedin.com/in/grant",
+      linkedin: "https://www.linkedin.com/in/grantokawa/",
       portfolio: "https://grant.com",
     },
     {
       name: "Lam",
-      profilePicture: "../assets/images/lam.jpg",
-      github: "https://github.com/lam",
-      linkedin: "https://linkedin.com/in/lam",
-      portfolio: "https://lam.com",
+      profilePicture: lamProfile,
+      github: "https://github.com/maxins1211",
     },
   ];
 

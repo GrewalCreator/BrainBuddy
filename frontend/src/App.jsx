@@ -17,6 +17,7 @@ import Chat from "./pages/Chat";
 import Generate from "./pages/Generate";
 import ChatBox from "./components/ChatBox";
 import Navbar from "./components/NavBar";
+import { ToastProvider } from "@radix-ui/react-toast";
 
 import "./assets/css/App.css";
 
@@ -43,68 +44,70 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <Navbar isLoggedIn={isLoggedIn} logoutUser={logoutUser} />
-      <Routes>
-        <Route
-          path="/login"
-          element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
-        />
-        <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/contact" element={<Team />} />
-        <Route path="/" element={<Launchpad />} />
+    <ToastProvider>
+      <Router>
+        <Navbar isLoggedIn={isLoggedIn} logoutUser={logoutUser} />
+        <Routes>
+          <Route
+            path="/login"
+            element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/contact" element={<Team />} />
+          <Route path="/" element={<Launchpad />} />
 
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Home />
-              <ChatBox />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Home />
+                <ChatBox />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/chat"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Chat />
-              <ChatBox />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Chat />
+                <ChatBox />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/decks"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Decks />
-              <ChatBox />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/decks"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Decks />
+                <ChatBox />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/study"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Decks />
-              <ChatBox />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/study"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Decks />
+                <ChatBox />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/generate"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Generate />
-              <ChatBox />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </Router>
+          <Route
+            path="/generate"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Generate />
+                <ChatBox />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </ToastProvider>
   );
 };
 

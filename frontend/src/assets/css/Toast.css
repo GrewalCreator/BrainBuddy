@@ -1,0 +1,51 @@
+/* Toast Root (Container) */
+.toast-root {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  border-radius: 12px; /* Matches signup container border radius */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Strong shadow for contrast */
+  padding: 16px; /* Padding inside the toast */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between title and description */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for contrast */
+  backdrop-filter: blur(8px); /* Glassmorphism effect */
+  font-family: "Arial", sans-serif; /* Match the font of the signup page */
+}
+
+/* Toast Title */
+.toast-title {
+  font-size: 1.2rem; /* Slightly larger font for title */
+  font-weight: 600; /* Semi-bold */
+  color: rgb(34, 17, 66); /* Dark purple color to match signup page */
+}
+
+/* Toast Description */
+.toast-description {
+  font-size: 1rem; /* Matches signup page font size */
+  color: rgb(34, 17, 66); /* Dark purple color to match signup page */
+}
+
+/* Toast Viewport (Positioning) */
+.toast-viewport {
+  position: fixed;
+  top: 70px; /* Position below the navbar */
+  right: 20px; /* Position at the right */
+  width: 300px; /* Fixed width */
+  max-width: 100%; /* Responsive */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Apply animation to the toast */
+.toast-root[data-state="closed"] {
+  animation: fadeOut 0.5s ease-out; /* 0.5s fade-out animation */
+}
