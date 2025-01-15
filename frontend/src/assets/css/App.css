@@ -1,11 +1,16 @@
 /* Global */
-html,
-body {
-  height: 100vh;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  background: url('../images/background.avif') no-repeat center center fixed;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 85%, /* Subtle fade */
+      rgba(34, 34, 34, 1) /* Dark grey to match the image */
+    ),
+    url('../images/background.avif') no-repeat center top;
   background-size: cover;
+  background-attachment: fixed; /* Ensures the background image stays fixed while scrolling */
   color: #c9d1d9;
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
