@@ -46,7 +46,7 @@ const Team = () => {
       linkedin: "https://www.linkedin.com/in/gurtej-grewal",
     },
     {
-      name: "Sophie",
+      name: "Sophie Wang",
       profilePicture: sophieProfile,
       github: "https://github.com/sophieynw",
       linkedin: "https://linkedin.com/in/sophie-y-wang",
