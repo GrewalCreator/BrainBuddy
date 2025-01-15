@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../assets/css/ChatBox.css"; // Import the CSS file
+import chatbotIcon from "../assets/images/chatbot-icon.png"; // Import the chatbot icon image
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
@@ -9,19 +10,15 @@ const ChatBox = () => {
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const messagesEndRef = useRef(null); // Ref for auto-scrolling to the bottom
 
-  // Display welcome message after a few seconds
+  // Display welcome message only once when the component mounts
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const welcomeMessage = {
-        id: messages.length + 1,
-        text: "Hello! I'm a chatbot. How can I help you today?",
-        sender: "bot",
-      };
-      setMessages([welcomeMessage]);
-    }, 2000); // 2-second delay
-
-    return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []); // Run only once when the component mounts
+    const welcomeMessage = {
+      id: 1, // Fixed ID for the welcome message
+      text: "Hello! I'm BuddyAI, your personal Tutor & Education Assistant! How can I help you today?",
+      sender: "bot",
+    };
+    setMessages([welcomeMessage]); // Set the welcome message only once
+  }, []); // Empty dependency array ensures this runs only once
 
   // Handle window resize for responsiveness
   useEffect(() => {
@@ -51,7 +48,7 @@ const ChatBox = () => {
         text: inputValue,
         sender: "user",
       };
-      setMessages([...messages, newMessage]);
+      setMessages((prevMessages) => [...prevMessages, newMessage]); // Add user message
       setInputValue("");
 
       setIsLoading(true); // Start loading
@@ -117,8 +114,12 @@ const ChatBox = () => {
     <div className="chatBox">
       {/* Chat Header with Minimize Icon */}
       <div className="chatHeader">
+        <div className="chatHeaderContent">
+          <img src={chatbotIcon} alt="BuddyAI" className="chatbotIcon" />
+          <span className="chatbotName">BuddyAI</span>
+        </div>
         <button onClick={toggleMinimize} className="controlButton">
-          🗕 {/* Minimize icon */}
+          ✕{/* Minimize icon (X) */}
         </button>
       </div>
 
@@ -134,6 +135,18 @@ const ChatBox = () => {
             {message.text}
           </div>
         ))}
+        {/* Show typing indicator when loading */}
+        {isLoading && (
+          <div className="botMessage">
+            <div className="typingIndicator">
+              <span> </span>
+              <span>•</span>
+              <span>•</span>
+              <span>•</span>
+              <span> </span>
+            </div>
+          </div>
+        )}
         {/* Empty div for auto-scrolling */}
         <div ref={messagesEndRef} />
       </div>
@@ -154,7 +167,7 @@ const ChatBox = () => {
           className="sendButton"
           disabled={isLoading} // Disable button while loading
         >
-          {isLoading ? "Loading..." : "Send"}
+          Send
         </button>
       </div>
     </div>
