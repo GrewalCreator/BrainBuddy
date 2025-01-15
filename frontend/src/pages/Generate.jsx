@@ -112,7 +112,7 @@ const Generate = () => {
 
           <button
             type="button"
-            className="generate-button"
+            className="button"
             onClick={handleGenerate}
             disabled={loading}
           >
