@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/login.css";
 import { handleLogin } from "../utils/authUtils";
-import { ToastDemo } from "../components/Toast"; // Adjust the import path as needed
+import { ToastDemo } from "../components/Toast";
 
 const LoginPage = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
@@ -20,11 +20,11 @@ const LoginPage = ({ setIsLoggedIn }) => {
 
     if (result.success) {
       setIsLoggedIn(true);
-      navigate("/home"); // Redirect to home page on successful login
+      navigate("/home");
     } else {
       setToastTitle("Login Failed");
       setToastDescription(result.message || "Invalid email or password.");
-      setOpen(true); // Show toast for failed login
+      setOpen(true);
     }
   };
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../assets/css/signup.css";
-import { ToastDemo } from "../components/Toast"; // Adjust the import path as needed
+import { ToastDemo } from "../components/Toast";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -22,13 +22,13 @@ const SignUpPage = () => {
         password,
         name,
       });
-      setMessage(response.data.message); // Success message
+      setMessage(response.data.message);
       setToastTitle("Sign Up Successful");
       setToastDescription("You have successfully signed up.");
       setOpen(true);
     } catch (error) {
       if (error.response && error.response.data) {
-        setMessage(error.response.data.error); // Error message from backend
+        setMessage(error.response.data.error);
       } else {
         setMessage("An unexpected error occurred.");
       }

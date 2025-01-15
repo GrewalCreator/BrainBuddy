@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #0056b3; /* Replace with your site's primary color */
-  --secondary-color: #007bff; /* Replace with your site's secondary color */
-  --text-color: #333; /* Replace with your site's text color */
-  --background-color: #f8f9fa; /* Replace with your site's background color */
-  --border-color: #dee2e6; /* Replace with your site's border color */
-  --hover-color: #003f7f; /* Replace with a hover color matching your theme */
+  --primary-color: #0056b3;
+  --secondary-color: #007bff;
+  --text-color: #333;
+  --background-color: #f8f9fa;
+  --border-color: #dee2e6;
+  --hover-color: #003f7f;
 }
 
 .chatBox {
@@ -22,7 +22,7 @@
   bottom: 20px;
   right: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Arial", sans-serif; /* Match your site's font */
+  font-family: "Arial", sans-serif;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -76,7 +76,7 @@
   padding: 0.5em;
   display: flex;
   flex-direction: column;
-  gap: 0.5em; /* Relative gap between messages */
+  gap: 0.5em;
 }
 
 .message {
@@ -176,7 +176,6 @@
   cursor: not-allowed;
 }
 
-/* Styles for the minimized chat icon */
 .chatIcon {
   position: fixed;
   bottom: 20px;
@@ -200,10 +199,9 @@
   background-color: var(--hover-color);
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .chatBox {
     width: 90%;
-    right: 5%; /* Center the chat box */
+    right: 5%;
   }
 }

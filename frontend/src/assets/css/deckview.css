@@ -7,10 +7,10 @@
 
 .deck-container {
   display: flex;
-  gap: 20px; /* Space between cards */
-  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 20px;
+  overflow-x: auto;
   padding: 10px;
-  scrollbar-width: thin; /* Thin scrollbar for modern browsers */
+  scrollbar-width: thin;
 }
 
 .deck-container::-webkit-scrollbar {
@@ -18,10 +18,10 @@
 }
 
 .deck-container::-webkit-scrollbar-thumb {
-  background: #888; /* Scrollbar thumb color */
+  background: #888;
   border-radius: 4px;
 }
 
 .deck-container::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Scrollbar thumb hover color */
+  background: #555;
 }

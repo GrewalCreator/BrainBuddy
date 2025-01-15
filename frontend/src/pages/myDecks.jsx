@@ -13,7 +13,7 @@ const Decks = () => {
           const data = await response.json();
           setDecks(data.decks);
         } else if (response.status === 404) {
-          setDecks(null); // Indicating no decks found
+          setDecks(null);
         }
       } catch (error) {
         console.error("Error fetching decks:", error);
@@ -71,7 +71,7 @@ const Decks = () => {
       </div>
     </div>
   );
-  
+
 };
 
 export default Decks;

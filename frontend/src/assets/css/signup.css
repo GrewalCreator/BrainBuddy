@@ -1,4 +1,3 @@
-/* General Page Styling */
 .signup-page {
     display: flex;
     align-items: center;
@@ -56,7 +55,7 @@
 .signup-container .error-message {
     margin-top: 10px;
     font-size: 0.9rem;
-    color: #e74c3c; /* Error red color */
+    color: #e74c3c;
 }
 
 
