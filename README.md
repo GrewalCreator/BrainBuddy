@@ -12,3 +12,5 @@ BrainBuddy, your AI-powered study companion designed to make learning smarter, f
 In `backend` dir, execute `pip install -r requirements.txt` and then `flask run`
 In `frontend` dir, execute `npm install` then `npm start`
 
+# Demo
+https://www.youtube.com/watch?v=_Wl5lfRc4Zg
