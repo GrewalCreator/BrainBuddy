@@ -35,12 +35,6 @@ const Home = () => {
             Create flashcards for any topic and start learning effectively.
           </p>
         </div>
-        <div className="feature-card">
-          <h3 className="feature-title">Interactive Quizzes</h3>
-          <p className="feature-description">
-            Test your knowledge with dynamic quizzes tailored to your needs.
-          </p>
-        </div>
       </div>
 
       <div className="button-container">
