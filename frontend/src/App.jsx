@@ -87,16 +87,6 @@ const App = () => {
           />
 
           <Route
-            path="/study"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Decks />
-                <ChatBox />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
             path="/generate"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>

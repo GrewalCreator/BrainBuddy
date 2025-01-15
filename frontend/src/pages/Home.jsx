@@ -1,11 +1,22 @@
 import { Link } from 'react-router-dom';
 import "../assets/css/home.css";
+import { Typewriter } from 'react-simple-typewriter';
 
 const Home = () => {
   return (
     <div className="home-container">
       <div className="home-header">
-        <h1 className="home-title">Welcome to Your AI Flashcard Companion</h1>
+        <h1 className="home-title">
+          <Typewriter
+            words={['Welcome to Your AI Teaching Companion']}
+            loop={false}
+            cursor
+            cursorStyle="|"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </h1>
         <p className="home-description">
           Learn, revise, and master concepts with ease using AI-generated flashcards.
         </p>

@@ -1,6 +1,6 @@
-/* General Container */
 .home-container {
-  min-height: 100vh;
+  min-height: 80vh;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,17 +8,12 @@
   padding: 20px;
 }
 
-/* Header Section */
 .home-header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 30px;
-}
-
-.home-title {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 16px;
+  width: 100%;
 }
 
 .home-description {
@@ -27,7 +22,6 @@
   margin-bottom: 30px;
 }
 
-/* Features Section */
 .home-features {
   display: flex;
   flex-wrap: wrap;
@@ -64,11 +58,11 @@
   color: #94a3b8;
 }
 
-/* Buttons */
 .button-container {
   display: flex;
   gap: 20px;
   justify-content: center;
+  margin-bottom: 20vh;
 }
 
 .button {
@@ -87,15 +81,26 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Hover Effect */
 .button:hover {
   background: linear-gradient(45deg, #2563eb, #1e3a8a);
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* Focus Effect */
 .button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
 }
+
+.home-title {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 16px;
+  text-align: left;
+}
+

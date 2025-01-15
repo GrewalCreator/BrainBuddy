@@ -56,9 +56,8 @@ const Team = () => {
     {
       name: "Grant",
       profilePicture: grantProfile,
-      github: "https://github.com/grant",
+      github: "https://github.com/GrantOkawa",
       linkedin: "https://www.linkedin.com/in/grantokawa/",
-      portfolio: "https://grant.com",
     },
     {
       name: "Lam",

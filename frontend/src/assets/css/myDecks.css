@@ -20,7 +20,7 @@
 
 .deck-preview-container {
   display: flex;
-  gap: 35px; 
+  gap: 35px;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 10px;
@@ -53,11 +53,11 @@
 
 /* Styling for no-decks-message */
 .no-decks-message {
-  border: 2px dashed #aaa; /* Dotted outline */
+  border: 2px dashed #aaa;
   padding: 40px;
   text-align: center;
   margin: 20px auto;
-  width: 80%; /* Centered and with a width limit */
+  width: 80%;
   border-radius: 8px;
   background-color: #f9f9f9;
 }

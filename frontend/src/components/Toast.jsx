@@ -1,5 +1,5 @@
 import * as Toast from "@radix-ui/react-toast";
-import "../assets/css/Toast.css"; // Import your custom CSS for the toast
+import "../assets/css/Toast.css";
 
 export const ToastDemo = ({ open, setOpen, title, description }) => {
   return (
