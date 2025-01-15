@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1b2430; /* Dark navy background */
+  background-color: #1b2430;
   padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  height: 60px; /* Ensures consistent navbar height */
+  height: 60px;
 }
 
 .brand-container {
@@ -32,9 +32,9 @@
 .links-container {
   display: flex;
   align-items: center;
-  gap: 30px; /* Spacing between links */
+  gap: 30px;
   padding: 10px 15px;
-  background-color: rgba(255, 255, 255, 0.1); /* Subtle container background */
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
 }
 
@@ -53,7 +53,6 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Logout Button */
 .logout {
   color: #ff6b6b;
   font-weight: bold;
@@ -69,9 +68,8 @@
   background-color: rgba(255, 107, 107, 0.1);
 }
 
-/* Login Button (Green Theme) */
 .login {
-  color: #34d399; /* Light green text */
+  color: #34d399;
   font-weight: bold;
   border: 2px solid transparent;
   padding: 8px 12px;

@@ -55,7 +55,6 @@
     margin-top: 10px;
   }
 
-  /* Answer Box */
   .chat-answer-box {
     margin-top: 30px;
     padding: 20px;
@@ -68,7 +67,7 @@
     white-space: pre-wrap;
   }
 
-  /* Gradient Purple Outline */
+
   .chat-answer-box::before {
     content: "";
     position: absolute;
@@ -81,7 +80,7 @@
     background: linear-gradient(135deg, #6a11cb, #2575fc);
   }
 
-  /* Answer Content */
+
   .chat-answer-title {
     font-size: 1.5rem;
     margin-bottom: 10px;

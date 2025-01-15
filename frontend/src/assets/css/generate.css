@@ -17,7 +17,7 @@
 .generate-form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Add consistent spacing between form elements */
+  gap: 20px;
 }
 
 .generate-form .form-group {
@@ -35,8 +35,8 @@
 .generate-form select,
 .generate-form textarea,
 .generate-form input {
-  width: 100%; /* Ensure inputs take full width of parent */
-  box-sizing: border-box; /* Include padding and border in width calculation */
+  width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
