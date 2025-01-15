@@ -7,6 +7,7 @@ const Launchpad = () => {
 
   return (
     <div className="launchpad-container">
+      {/* Header Section */}
       <header className="launchpad-header">
         <h1 className="launchpad-title">Welcome to BrainBuddy</h1>
         <p className="launchpad-subtitle">Your ultimate companion for learning and growth.</p>

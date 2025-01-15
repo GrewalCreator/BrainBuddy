@@ -1,4 +1,4 @@
-
+/* Launchpad Container */
 .launchpad-container {
   min-height: 80vh;
   max-height: 90vh;
@@ -7,6 +7,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 10px;
+  background-size: cover;
+  color: #c9d1d9;
+  overflow: hidden;
 }
 
 .launchpad-header {
@@ -15,48 +18,87 @@
 }
 
 .launchpad-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #58a6ff;
   margin-bottom: 5px;
+  animation: text-slide 1.5s ease-in-out;
 }
 
 .launchpad-subtitle {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #8b949e;
 }
 
 .launchpad-actions {
   display: flex;
-  gap: 10px;
-  margin: 10px 0;
+  gap: 15px;
+  margin: 20px 0;
 }
 
+.launchpad-actions .button {
+  background: linear-gradient(135deg, #4caf50, #16a085);
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: float 2s ease-in-out infinite;
+}
+
+.launchpad-actions .button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Info Section */
 .launchpad-info {
   max-width: 700px;
-  margin: 5px auto;
+  margin: 10px auto;
   text-align: center;
   line-height: 1.4;
 }
 
 .launchpad-section-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #58a6ff;
-  margin-bottom: 10px; /* Reduced spacing below section title */
+  margin-bottom: 15px;
 }
 
 .launchpad-description {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #c9d1d9;
+  margin-bottom: 10px;
 }
 
+/* Footer */
 .launchpad-footer {
-  margin-top: 5px; /* Reduced margin to move footer closer to other elements */
-  margin-bottom: 10vh;
+  margin-top: 20px;
   text-align: center;
-  flex-shrink: 0;
 }
 
 .launchpad-footer-text {
   color: #8b949e;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes text-slide {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
