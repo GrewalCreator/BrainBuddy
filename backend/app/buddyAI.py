@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CACHE_DIR = os.path.join(BASE_DIR, "../../frontend/src/assets/cache")
-KEY_PATH = os.path.join(BASE_DIR, "./.env")
+CACHE_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "..", "frontend", "src", "assets", "cache"))
+KEY_PATH = os.path.join(BASE_DIR, ".env")
 
 # Load environment variables from .env
 load_dotenv(dotenv_path=KEY_PATH)

@@ -43,7 +43,7 @@ const Decks = () => {
     <div>
       <div className="decks-container">
         <h1 className="decks-title">Your Flashcard Decks</h1>
-        {decks === null ? (
+        {decks === null || decks.length === 0 ? (
           <div className="no-decks-message">
             <p>No decks found.</p>
             <a href="/generate" className="create-button">
@@ -71,6 +71,7 @@ const Decks = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Decks;
