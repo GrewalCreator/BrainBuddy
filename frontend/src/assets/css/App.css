@@ -3,7 +3,8 @@ html, body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #0d1117;
+  background: url('../images/background.avif') no-repeat center center;
+  background-size:100%;
   color: #c9d1d9;
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
