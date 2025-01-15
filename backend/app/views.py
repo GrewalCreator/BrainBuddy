@@ -42,6 +42,7 @@ def get_decks():
                 deck = json.load(file)
                 deck_title = filename.replace(".json", "").replace("_", " ")
                 decks.append({"title": deck_title, "cards": deck})
+                print("DECK TITLE: ", deck_title)
 
         return jsonify({"decks": decks}), 200
     except Exception as e:

@@ -99,7 +99,8 @@ def AIResponse():
         completion = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "You are a Tutor for students, you are detailed, accurate, and polite."},
+                {"role": "system", "content": "You are a Tutor for students, you are detailed, accurate, and polite. Format all responses with proper spacing and newlines."
+                 "Do not use any Latex, bold or italic style formatting"},
                 {
                     "role": "user",
                     "content": question,
