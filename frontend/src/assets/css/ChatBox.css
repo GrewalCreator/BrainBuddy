@@ -97,6 +97,7 @@
   background-color: var(--background-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
+  white-space: pre-wrap;
 }
 
 .typingIndicator {

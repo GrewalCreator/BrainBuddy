@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import "../assets/css/chat.css";
 
 function Chat() {
-  const [question, setQuestion] = useState(""); // To store the user's question
-  const [answer, setAnswer] = useState(""); // To store the AI's answer
-  const [loading, setLoading] = useState(false); // To show a loading indicator
-  const [error, setError] = useState(""); // To handle errors
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSend = async () => {
     if (!question.trim()) {
@@ -12,8 +13,8 @@ function Chat() {
       return;
     }
 
-    setError(""); // Clear any previous error
-    setLoading(true); // Show loading indicator
+    setError("");
+    setLoading(true);
 
     try {
       const response = await fetch("/generateAI", {
@@ -26,7 +27,7 @@ function Chat() {
 
       if (response.ok) {
         const data = await response.json();
-        setAnswer(data.answer); // Set the AI's answer
+        setAnswer(data.answer);
       } else {
         const errorData = await response.json();
         setError(errorData.error || "Something went wrong.");
@@ -34,56 +35,44 @@ function Chat() {
     } catch (err) {
       setError("Unable to connect to the server. Please try again later.");
     } finally {
-      setLoading(false); // Hide loading indicator
+      setLoading(false);
     }
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", margin: "20px" }}>
-      <h1>AI Tutor</h1>
-      <p>Ask a question, and the AI will provide a detailed answer!</p>
+    <div className="chat-container">
+      <h1 className="chat-title">AI Tutor</h1>
+      <p className="chat-description">Ask a question, and the AI will provide a detailed answer!</p>
 
-      <div style={{ marginBottom: "20px" }}>
+      <div className="chat-input-container">
         <textarea
+          className="chat-input"
           placeholder="Enter your question here..."
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           rows="4"
-          cols="50"
-          style={{
-            width: "100%",
-            padding: "10px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
         />
       </div>
 
-      <button
-        onClick={handleSend}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
-      >
-        {loading ? "Sending..." : "Send"}
-      </button>
+      <div className="chat-send-container">
+        <button
+          onClick={handleSend}
+          className="button btn-primary"
+        >
+          {loading ? "Sending..." : "Send"}
+        </button>
+      </div>
 
       {error && (
-        <div style={{ marginTop: "20px", color: "red" }}>
+        <div className="error-message">
           <strong>Error:</strong> {error}
         </div>
       )}
 
       {answer && (
-        <div style={{ marginTop: "20px" }}>
-          <h2>Answer:</h2>
-          <p>{answer}</p>
+        <div className="chat-answer-box">
+          <h2 className="chat-answer-title">Answer:</h2>
+          <p className="chat-answer-content">{answer}</p>
         </div>
       )}
     </div>

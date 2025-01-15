@@ -1,0 +1,101 @@
+/* Chat Page Container */
+.chat-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: var(--background-light);
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    font-family: "Arial", sans-serif;
+    color: var(--text-primary);
+  }
+  
+  /* Title and Description */
+  .chat-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    text-align: center;
+  }
+  
+  .chat-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Container */
+  .chat-input-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chat-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize: none;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .chat-input:focus {
+    border-color: var(--button-primary-hover);
+    box-shadow: 0 0 8px var(--button-primary-hover);
+    outline: none;
+  }
+  
+  /* Centered Send Button */
+  .chat-send-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  /* Answer Box */
+  .chat-answer-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+    white-space: pre-wrap;
+  }
+  
+  /* Gradient Purple Outline */
+  .chat-answer-box::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    z-index: -1;
+    border-radius: 16px; /* Slightly larger than the box radius */
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+  }
+  
+  /* Answer Content */
+  .chat-answer-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--button-primary);
+  }
+  
+  .chat-answer-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    word-wrap: break-word;
+  }
+  

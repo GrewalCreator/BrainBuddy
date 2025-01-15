@@ -23,6 +23,22 @@ const Decks = () => {
     fetchDecks();
   }, []);
 
+  const extractTitle = (title) => {
+    try {
+      // Split the title into parts based on spaces
+      const parts = title.split(" ");
+      if (parts.length <= 2) {
+        console.warn(`Unexpected title format: "${title}"`);
+        return title; // Return the full title if it doesn't follow the expected format
+      }
+      // Join all parts except the last two (date and time)
+      return parts.slice(0, -2).join(" ");
+    } catch (error) {
+      console.error(`Error extracting title from: "${title}"`, error);
+      return "Untitled Deck"; // Fallback title
+    }
+  };
+
   return (
     <div>
       <div className="decks-container">
@@ -37,7 +53,7 @@ const Decks = () => {
         ) : (
           decks.map((deck, index) => (
             <div key={index} className="deck-section">
-              <h2 className="deck-title">{deck.title}</h2>
+              <h2 className="deck-title">{extractTitle(deck.title)}</h2>
               <div className="deck-preview-container">
                 {deck.cards.map((card, cardIndex) => (
                   <CardPreview
