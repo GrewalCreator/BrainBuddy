@@ -5,8 +5,12 @@ from flask import Blueprint, json, request, jsonify
 from dotenv import load_dotenv
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CACHE_DIR = os.path.join(BASE_DIR, "../../frontend/src/assets/cache")
+KEY_PATH = os.path.join(BASE_DIR, "./.env")
+
 # Load environment variables from .env
-load_dotenv(dotenv_path="backend\app\.env")
+load_dotenv(dotenv_path=KEY_PATH)
 
 # Set the OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -14,8 +18,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Define the Flask Blueprint
 buddyAI = Blueprint("buddyAI", __name__)
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CACHE_DIR = os.path.join(BASE_DIR, "../../frontend/src/assets/cache")
+
 
 @buddyAI.route("/generateFlashcards", methods=["POST"])
 def flashcards():
@@ -38,10 +41,9 @@ def flashcards():
             '[{"question": "What is the capital of France?", "answer": "Paris"}, ...]'
         )
 
-        from openai import OpenAI
-        client = OpenAI()
+        
 
-        completion = client.chat.completions.create(
+        completion = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a Tutor for students, you are detailed, accurate, and polite."},
@@ -93,10 +95,8 @@ def AIResponse():
         if not question:
             return jsonify({"error": "Question is required"}), 400
 
-        from openai import OpenAI
-        client = OpenAI()
 
-        completion = client.chat.completions.create(
+        completion = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a Tutor for students, you are detailed, accurate, and polite."},
