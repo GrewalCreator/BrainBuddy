@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../assets/css/generate.css';
-import Navbar from '../components/NavBar';
 
 const Generate = () => {
   const [topic, setTopic] = useState('');
@@ -42,7 +41,6 @@ const Generate = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="generate-container">
       <h1 className="generate-title">Generate Flashcards</h1>
       <form className="generate-form" onSubmit={(e) => e.preventDefault()}>
@@ -75,7 +73,7 @@ const Generate = () => {
             <option value="Elementary">Elementary</option>
             <option value="Middle School">Middle School</option>
             <option value="High School">High School</option>
-            <option value="University/College">College</option>
+            <option value="University/College">University/College</option>
           </select>
         </div>
 

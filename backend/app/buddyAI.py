@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import os
 
 # Load environment variables from .env
-load_dotenv()
+load_dotenv(dotenv_path="backend\app\.env")
 
 # Set the OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -14,7 +14,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Define the Flask Blueprint
 buddyAI = Blueprint("buddyAI", __name__)
 
-CACHE_DIR = "../../frontend/src/assets/cache"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CACHE_DIR = os.path.join(BASE_DIR, "../../frontend/src/assets/cache")
 
 @buddyAI.route("/generateFlashcards", methods=["POST"])
 def flashcards():

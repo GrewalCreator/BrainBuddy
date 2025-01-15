@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from datetime import timedelta
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(dotenv_path="./.env")
 
 # Initialize Flask extensions
 db = SQLAlchemy()

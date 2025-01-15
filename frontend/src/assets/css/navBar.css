@@ -1,28 +1,86 @@
-
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b2430; /* Dark navy background */
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  height: 60px; /* Ensures consistent navbar height */
+}
 
-  .brand {
-    cursor: pointer;
-    font-size: 1.5rem;
-    background-color: inherit;
-  }
+.brand-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 
-  .links-container {
-    display: flex;
-    align-items: center;
-    background-color: inherit;
-  }
+.brand-logo {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
 
-  .link {
-    cursor: pointer;
-    margin-right: 20px;
-    background-color: inherit;
-  }
+.brand-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.links-container {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Spacing between links */
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle container background */
+  border-radius: 12px;
+}
+
+.link {
+  font-family: "Arial", sans-serif;
+  font-size: 1rem;
+  color: #cfd7df;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Logout Button */
+.logout {
+  color: #ff6b6b;
+  font-weight: bold;
+  border: 2px solid transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.logout:hover {
+  color: #ffffff;
+  border-color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+/* Login Button (Green Theme) */
+.login {
+  color: #34d399; /* Light green text */
+  font-weight: bold;
+  border: 2px solid transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.login:hover {
+  color: #ffffff;
+  border-color: #34d399;
+  background-color: rgba(52, 211, 153, 0.1);
+}

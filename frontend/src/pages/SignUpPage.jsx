@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../assets/css/signup.css";
-import Navbar from "../components/NavBar";
 
 const SignUpPage = () => {
     const [email, setEmail] = useState("");
@@ -30,53 +29,50 @@ const SignUpPage = () => {
     };
 
     return (
-        <div>
-            <Navbar />
-            <div className="sign-up-page">
-            
-                <div className="sign-up-container">
-                    <h1 className="sign-up-title">Sign Up</h1>
-                    <form onSubmit={handleSignUp} className="sign-up-form">
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="sign-up-input"
-                        />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="sign-up-input"
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="sign-up-input"
-                        />
-                        <button type="submit" className="btn sign-up-btn">
-                            Register
-                        </button>
-                    </form>
+        <div className="signup-page">
+            <div className="signup-container">
+                <h1 className="page-title">Create Your Account</h1>
+                <p className="page-subtitle">Join BrainBuddy today!</p>
+                <form onSubmit={handleSignUp} className="form">
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="input-field"
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="input-field"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="input-field"
+                        required
+                    />
+                    <button type="submit" className="button full-width">
+                        Register
+                    </button>
+                </form>
 
-                    {message && <p className="sign-up-message">{message}</p>}
+                {message && <p className="error-message">{message}</p>}
 
-                    {/* Added login link */}
-                    <div className="login-link-container">
-                        <p>
-                            Already have an account?{" "}
-                            <Link to="/login" className="login-link">Login</Link>
-                        </p>
-                    </div>
-                </div>
+                <p className="redirect-message">
+                    Already have an account?{" "}
+                    <Link to="/login" className="link">
+                        Login
+                    </Link>
+                </p>
             </div>
-
         </div>
-
     );
 };
 

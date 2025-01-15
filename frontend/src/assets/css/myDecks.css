@@ -1,40 +1,80 @@
 .decks-container {
-    padding: 20px;
-  }
-  
-  .decks-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
-  }
-  
-  .deck-section {
-    margin-bottom: 40px;
-  }
-  
-  .deck-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .deck-preview-container {
-    display: flex;
-    gap: 15px; /* Space between cards */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    padding: 10px;
-  }
-  
-  .deck-preview-container::-webkit-scrollbar {
-    height: 8px;
-  }
-  
-  .deck-preview-container::-webkit-scrollbar-thumb {
-    background: #888; /* Scrollbar thumb color */
-    border-radius: 4px;
-  }
-  
-  .deck-preview-container::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Scrollbar thumb hover color */
-  }
-  
+  padding: 20px;
+}
+
+.decks-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.deck-section {
+  margin-bottom: 40px;
+}
+
+.deck-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.deck-preview-container {
+  display: flex;
+  gap: 35px; /* Space between cards */
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+}
+
+.deck-preview-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.deck-preview-container::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb color */
+  border-radius: 4px;
+}
+
+.deck-preview-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Scrollbar thumb hover color */
+}
+
+/* Styling for no-decks-message */
+.no-decks-message {
+  border: 2px dashed #aaa; /* Dotted outline */
+  padding: 40px;
+  text-align: center;
+  margin: 20px auto;
+  width: 80%; /* Centered and with a width limit */
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.no-decks-message p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.no-decks-message .create-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.no-decks-message .create-button:hover {
+  background-color: #0056b3;
+}
+
+.no-decks-message .create-button:focus {
+  outline: none;
+}

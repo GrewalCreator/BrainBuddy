@@ -1,28 +1,27 @@
 .deck-view {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-  }
-  
-  .deck-container {
-    display: flex;
-    gap: 20px; /* Space between cards */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    padding: 10px;
-    scrollbar-width: thin; /* Thin scrollbar for modern browsers */
-  }
-  
-  .deck-container::-webkit-scrollbar {
-    height: 8px;
-  }
-  
-  .deck-container::-webkit-scrollbar-thumb {
-    background: #888; /* Scrollbar thumb color */
-    border-radius: 4px;
-  }
-  
-  .deck-container::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Scrollbar thumb hover color */
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.deck-container {
+  display: flex;
+  gap: 20px; /* Space between cards */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 10px;
+  scrollbar-width: thin; /* Thin scrollbar for modern browsers */
+}
+
+.deck-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.deck-container::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb color */
+  border-radius: 4px;
+}
+
+.deck-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Scrollbar thumb hover color */
+}

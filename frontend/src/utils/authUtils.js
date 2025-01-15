@@ -1,62 +1,102 @@
+let sessionInterval = null;
+
+// Check if the user is logged in
 export const checkAuthStatus = async () => {
     try {
         const response = await fetch("/api/is_authenticated", {
-            method: "GET",
-            credentials: "include",
+        method: "GET",
+        credentials: "include",
         });
 
         if (response.ok) {
-            const data = await response.json();
-            return data.isAuthenticated; // Return the authentication status
+        const data = await response.json();
+        return data.isAuthenticated;
         } else {
-            return false; // User is not authenticated
+        return false;
         }
     } catch (error) {
         console.error("Error checking authentication status:", error);
-        return false; // Handle error gracefully
+        return false;
     }
 };
 
+// Handle user login
 export const handleLogin = async (email, password) => {
     try {
         const response = await fetch("/login", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
         });
 
         if (response.ok) {
-            return { success: true, message: "Login successful!" }; // Success response
+            localStorage.setItem("isLoggedIn", true);
+            return { success: true, message: "Login successful!" };
         } else {
-            return { success: false, message: "Username/password incorrect." }; // Failure response
+            return { success: false, message: "Invalid credentials." };
         }
     } catch (error) {
+        console.error("Error during login:", error);
         return {
-            success: false,
-            message: "An unexpected error occurred. Please try again.",
-        }; // Handle error
+        success: false,
+        message: "An unexpected error occurred. Please try again.",
+        };
     }
 };
 
+// Handle user logout
 export const handleLogout = async () => {
     try {
         const response = await fetch("/logout", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        },
         });
 
         if (response.ok) {
-            return true; // Indicate successful logout
+
+        localStorage.removeItem("isLoggedIn");
+        clearSessionCheck();
+        return true;
         } else {
-            return false; // Indicate failure
+        return false;
         }
     } catch (error) {
-        return false; // Handle error case
+        console.error("Error logging out:", error);
+        return false;
+    }
+};
+
+// Validate session periodically
+export const startSessionCheck = (setIsLoggedIn) => {
+    const validateSession = async () => {
+        const isAuthenticated = await checkAuthStatus();
+        if (isAuthenticated) {
+        localStorage.setItem("isLoggedIn", true);
+        setIsLoggedIn(true);
+        } else {
+        localStorage.removeItem("isLoggedIn");
+        setIsLoggedIn(false);
+        clearSessionCheck();
+        }
+    };
+
+    // Run validation immediately
+    validateSession();
+
+    // Start interval for session validation
+    sessionInterval = setInterval(validateSession, 5 * 60 * 1000); // Every 5 minutes
+};
+
+// Clear the session validation interval
+export const clearSessionCheck = () => {
+    if (sessionInterval) {
+        clearInterval(sessionInterval);
+        sessionInterval = null;
     }
 };

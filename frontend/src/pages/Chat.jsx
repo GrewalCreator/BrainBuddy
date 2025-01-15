@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Test() {
+function Chat() {
   const [question, setQuestion] = useState(""); // To store the user's question
   const [answer, setAnswer] = useState(""); // To store the AI's answer
   const [loading, setLoading] = useState(false); // To show a loading indicator
@@ -90,4 +90,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Chat;

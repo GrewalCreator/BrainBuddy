@@ -1,25 +1,41 @@
 import { Link } from 'react-router-dom';
-import NavBar from '../components/NavBar';
-import Button from '../components/Button';
 import "../assets/css/home.css";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-cream-50">
-      <NavBar />
-      <main className="container mx-auto px-4 py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-serif font-bold mb-6 text-gray-800">
-            Welcome to Your AI Flashcard Companion
-          </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Learn, revise, and master concepts with ease using AI-generated flashcards.
+    <div className="home-container">
+      <div className="home-header">
+        <h1 className="home-title">Welcome to Your AI Flashcard Companion</h1>
+        <p className="home-description">
+          Learn, revise, and master concepts with ease using AI-generated flashcards.
+        </p>
+      </div>
+
+      <div className="home-features">
+        <div className="feature-card">
+          <h3 className="feature-title">AI Tutor</h3>
+          <p className="feature-description">
+            Ask the AI any question and receive detailed explanations instantly.
           </p>
-          <Link to="/generate">
-            <Button>Create a New Deck</Button>
-          </Link>
         </div>
-      </main>
+        <div className="feature-card">
+          <h3 className="feature-title">Flashcard Generator</h3>
+          <p className="feature-description">
+            Create flashcards for any topic and start learning effectively.
+          </p>
+        </div>
+        <div className="feature-card">
+          <h3 className="feature-title">Interactive Quizzes</h3>
+          <p className="feature-description">
+            Test your knowledge with dynamic quizzes tailored to your needs.
+          </p>
+        </div>
+      </div>
+
+      <div className="button-container">
+        <Link to="/generate" className="button">Create a New Deck</Link>
+        <Link to="/chat" className="button">Ask AI a Question</Link>
+      </div>
     </div>
   );
 };
